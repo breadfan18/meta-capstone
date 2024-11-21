@@ -39,7 +39,6 @@ p {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  /* padding-right: 30px; */
 }
 
 .nav a {
@@ -49,10 +48,20 @@ p {
   font-weight: bold;
 }
 
+.main-container {
+  background-color: rgb(226, 226, 226);
+  height: 100%;
+  flex: 1;
+  margin: 10px 0;
+  border-radius: 10px;
+  padding: 20px;
+}
+
 .footer {
   display: flex;
-  justify-content: space-between;
-  padding: 30px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 15px 30px;
   border-top: 1px solid #cababa;
 }
 
@@ -67,4 +76,10 @@ p {
 .social-media-footer > * {
   /* font-size: 10rem; */
   margin-right: 10px;
+}
+
+.footer img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
