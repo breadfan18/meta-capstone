@@ -1,12 +1,16 @@
 // IMPORT useState
 import React, { useState } from "react";
 import "./index.css";
+import Header from "./components/Header";
+import Main from "./components//Main";
+import Footer from "./components//Footer";
 
 export default function App() {
-
   return (
-    <div className="App">
-      <h1>Template</h1>
-    </div>
+    <>
+      <Header />
+      <Main />
+      <Footer />
+    </>
   );
 }
