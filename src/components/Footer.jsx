@@ -12,7 +12,7 @@ export default function Footer() {
     <>
       <footer className="footer">
         <img
-          src="https://i.imgur.com/cIDnEF0.png"
+          src="https://i.imgur.com/sExfMN4.png"
           alt=""
           style={{ width: "25rem" }}
         />
@@ -34,7 +34,7 @@ export default function Footer() {
           <p>San Francisco, CA</p>
           <p>Cincinnati, OH</p>
           <p>New York, NY</p>
-          <p>London, England</p>
+          <p>Chicago, IL</p>
         </section>
         <section>
           <h4>Meet our Team</h4>

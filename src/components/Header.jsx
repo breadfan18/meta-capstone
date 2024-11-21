@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <div className={headerClassName}>
       <img
-        src="https://i.imgur.com/cIDnEF0.png"
+        src="https://i.imgur.com/sExfMN4.png"
         alt=""
         style={{ width: "25rem" }}
       />
