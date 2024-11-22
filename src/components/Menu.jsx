@@ -8,12 +8,9 @@ export default function Menu() {
   const menuItemClasssName =
     isMobile || isTablet ? "menuItemContainerMobile" : "menuItemContainer";
   return (
-    <div>
-      <h1>Menu</h1>
-      <ul
-        className="menuContainer"
-        style={{ flexDirection: isMobile || isTablet ? "column" : null }}
-      >
+    <div className="menuContainer">
+      <h2 id="menuTitle">A little peak into our menu..</h2>
+      <ul style={{ flexDirection: isMobile || isTablet ? "column" : null }}>
         <li className={menuItemClasssName}>
           <img src="https://i.imgur.com/atPruMn.jpeg" alt="" />
           <section>
