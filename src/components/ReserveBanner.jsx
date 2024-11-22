@@ -13,7 +13,7 @@ export default function ReserveTableBanner() {
           We are open for lunch and dinner Monday through Friday, and for dinner
           on the weekends. Please call us to make a reservation.
         </p>
-        <NavLink to="/reservation" className="reserveButton">
+        <NavLink to="/reservations" className="reserveButton">
           Reserve a table
         </NavLink>
       </section>
