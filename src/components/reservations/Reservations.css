@@ -1,0 +1,85 @@
+:root {
+  --primary-green: #1a4a3a;
+  --light-green: #4d5e58;
+  --very-light-green: #cbe3db;
+  --yellow: #eed049;
+  --light-gray: #e2e2e2;
+}
+
+.reservactionsMainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reservationContainer {
+  background-color: var(--light-gray);
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  padding: 30px;
+  border-radius: 20px;
+  height: 42rem;
+  margin: 0 30px;
+}
+
+.reservationContainer h1 {
+  color: var(--primary-green);
+}
+
+#reservationForm {
+  background-color: var(--light-gray);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+#reservationForm input {
+  width: 100%;
+  height: 2rem;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid var(--light-green);
+  padding: 10px;
+}
+
+#reservationForm label {
+  font-weight: bold;
+}
+.stepper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stepper svg {
+  cursor: pointer;
+  font-size: 2.5rem;
+  color: var(--primary-green);
+}
+
+.stepper h2 {
+  color: var(--yellow);
+}
+
+.tableTimesContainer {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.timeBox {
+  padding: 8px;
+  background-color: var(--very-light-green);
+  width: 6rem;
+  margin: 3px;
+  border-radius: 20px;
+  border: 3px solid var(--primary-green);
+  text-align: center;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: var(--yellow);
+}

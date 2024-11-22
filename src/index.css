@@ -111,6 +111,7 @@ ul {
   max-width: 15rem;
   text-align: center;
   margin-top: 20px;
+  cursor: pointer;
 }
 
 .tablesImg {
@@ -149,6 +150,7 @@ ul {
   color: white;
   padding-bottom: 20px;
   height: auto;
+  box-shadow: 0 0 20px gray;
 }
 
 .menuContainer img {
