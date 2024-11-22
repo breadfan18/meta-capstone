@@ -24,7 +24,7 @@ export default function Confirmation({
             <span>{userInformation.userName}</span>
           </p>
           <p>
-            We will send you a confirmation email to{" "}
+            We have sent a confirmation email to{" "}
             <span>{userInformation.email}</span>
           </p>
           <p>
