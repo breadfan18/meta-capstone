@@ -35,9 +35,10 @@
   height: 100%;
 }
 
-#reservationForm input {
+#reservationForm input,
+#reservationForm select {
   width: 100%;
-  height: 2rem;
+  height: 3rem;
   margin: 10px 0;
   border-radius: 5px;
   border: 1px solid var(--light-green);
@@ -82,4 +83,13 @@
 
 .selected {
   background-color: var(--yellow);
+}
+
+.confirmationDialog p {
+  margin: 20px;
+}
+
+.confirmationDialog span {
+  color: var(--primary-green);
+  font-weight: bold;
 }
