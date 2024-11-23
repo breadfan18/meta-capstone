@@ -6,9 +6,10 @@ export default function Confirmation({
   date,
   selectedTimeSlot,
   userInformation,
+  containerClass,
 }) {
   return (
-    <div class="reservationContainer">
+    <div class={containerClass}>
       <h1 style={{ color: continueToConfirmation ? "#1a4a3a" : "gray" }}>
         Confirmation..
       </h1>

@@ -12,10 +12,11 @@ export default function ReservationDetails({
   selectedTimeSlot,
   setSelectedTimeSlot,
   setContinueToUserInfo,
+  containerClass,
 }) {
   return (
-    <div class="reservationContainer">
-      <h1>Give us the deets..</h1>
+    <div class={containerClass}>
+      <h1>Reservation deets..</h1>
       <form id="reservationForm">
         <div className="inputField">
           <label for="date">Select Date:</label>

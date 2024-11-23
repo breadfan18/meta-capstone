@@ -16,12 +16,24 @@
   background-color: var(--light-gray);
   display: flex;
   flex-direction: column;
-  width: 25rem;
+  width: 28%;
   padding: 30px;
   border-radius: 20px;
   height: 42rem;
   margin: 0 30px;
   box-shadow: 0 0 10px var(--primary-green);
+}
+
+.reservationContainerMobile {
+  background-color: var(--light-gray);
+  display: flex;
+  flex-direction: column;
+  width: 100%f;
+  padding: 30px;
+  border-radius: 20px;
+  height: 42rem;
+  margin: 10px 0;
+  /* box-shadow: 0 0 10px var(--primary-green); */
 }
 
 .reservationContainer h1 {

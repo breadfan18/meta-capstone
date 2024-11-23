@@ -5,9 +5,11 @@ export default function UserInformation({
   setContinueToConfirmation,
   userInformation,
   handleUserInformation,
+  containerClass,
+  setContinueToUserInfo,
 }) {
   return (
-    <div class="reservationContainer">
+    <div class={containerClass}>
       <h1 style={{ color: continueToUserInfo ? "#1a4a3a" : "gray" }}>
         Your Information..
       </h1>
@@ -38,7 +40,7 @@ export default function UserInformation({
           <div>
             <label for="time">Phone Number:</label>
             <input
-              type="email"
+              type="phone"
               id="phone"
               name="phone"
               required
@@ -64,7 +66,13 @@ export default function UserInformation({
           <button
             type="submit"
             className="reserveButton"
-            onClick={() => setContinueToConfirmation(true)}
+            onClick={(e) => {
+              e.preventDefault();
+              if (setContinueToUserInfo) {
+                setContinueToUserInfo(false);
+              }
+              setContinueToConfirmation(true);
+            }}
             disabled={
               userInformation.userName === "" ||
               userInformation.email === "" ||

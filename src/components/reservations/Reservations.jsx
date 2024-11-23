@@ -4,8 +4,11 @@ import { getTimeIncrements } from "../../helpers";
 import ReservationDetails from "./ReservationDetails";
 import UserInformation from "./UserInformation";
 import Confirmation from "./Confirmation";
+import useWindhowWidth from "../../windowWidth";
+import ReservationsMobile from "./ReservationsMobile";
 
 export default function Reservations() {
+  const { isMobile, isTablet } = useWindhowWidth();
   const [continueToUserInfo, setContinueToUserInfo] = useState(false);
   const [continueToConfirmation, setContinueToConfirmation] = useState(false);
   const [people, setPeople] = useState(0);
@@ -21,6 +24,7 @@ export default function Reservations() {
   });
 
   const handleUserInformation = (e) => {
+    e.preventDefault();
     console.log(e.target.name, e.target.value);
 
     setUserInformation({
@@ -35,7 +39,9 @@ export default function Reservations() {
     }
   }, [time]);
 
-  return (
+  return isMobile || isTablet ? (
+    <ReservationsMobile />
+  ) : (
     <div className="reservactionsMainContainer">
       <ReservationDetails
         date={date}
@@ -48,12 +54,22 @@ export default function Reservations() {
         selectedTimeSlot={selectedTimeSlot}
         setSelectedTimeSlot={setSelectedTimeSlot}
         setContinueToUserInfo={setContinueToUserInfo}
+        containerClass={
+          isMobile || isTablet
+            ? "reservationContainerMobile"
+            : "reservationContainer"
+        }
       />
       <UserInformation
         continueToUserInfo={continueToUserInfo}
         setContinueToConfirmation={setContinueToConfirmation}
         userInformation={userInformation}
         handleUserInformation={handleUserInformation}
+        containerClass={
+          isMobile || isTablet
+            ? "reservationContainerMobile"
+            : "reservationContainer"
+        }
       />
       <Confirmation
         continueToConfirmation={continueToConfirmation}
@@ -61,6 +77,11 @@ export default function Reservations() {
         date={date}
         selectedTimeSlot={selectedTimeSlot}
         userInformation={userInformation}
+        containerClass={
+          isMobile || isTablet
+            ? "reservationContainerMobile"
+            : "reservationContainer"
+        }
       />
     </div>
   );
