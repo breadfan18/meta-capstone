@@ -6,7 +6,7 @@
   --light-gray: #e2e2e2;
 }
 
-.reservactionsMainContainer {
+.reservationsMainContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,7 @@
   background-color: var(--light-gray);
   display: flex;
   flex-direction: column;
-  width: 100%f;
+  width: 100%;
   padding: 30px;
   border-radius: 20px;
   height: 42rem;
@@ -61,6 +61,7 @@
 #reservationForm label {
   font-weight: bold;
 }
+
 .stepper {
   display: flex;
   justify-content: space-around;
@@ -73,8 +74,8 @@
   color: var(--primary-green);
 }
 
-.stepper h2 {
-  color: var(--yellow);
+.stepper h1 {
+  margin-right: 20px;
 }
 
 .tableTimesContainer {

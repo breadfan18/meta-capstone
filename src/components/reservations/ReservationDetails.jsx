@@ -14,6 +14,8 @@ export default function ReservationDetails({
   setContinueToUserInfo,
   containerClass,
 }) {
+  const [getTables, setGetTables] = React.useState(false);
+
   return (
     <div class={containerClass}>
       <h1>Reservation deets..</h1>
@@ -45,7 +47,11 @@ export default function ReservationDetails({
 
         <div>
           <label for="people">Number of People:</label>
-          <Stepper value={people} setValue={setPeople} />
+          <Stepper
+            value={people}
+            setValue={setPeople}
+            setGetTables={setGetTables}
+          />
         </div>
 
         <label for="table">Select a Table Spot:</label>
@@ -54,6 +60,7 @@ export default function ReservationDetails({
             date !== "" &&
             time !== "" &&
             people !== 0 &&
+            getTables &&
             tableTimeOptions.map((time) => (
               <div
                 className={`timeBox ${selectedTimeSlot === time && "selected"}`}

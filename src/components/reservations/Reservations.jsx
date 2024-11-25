@@ -5,7 +5,6 @@ import ReservationDetails from "./ReservationDetails";
 import UserInformation from "./UserInformation";
 import Confirmation from "./Confirmation";
 import useWindhowWidth from "../../windowWidth";
-import ReservationsMobile from "./ReservationsMobile";
 
 export default function Reservations() {
   const { isMobile, isTablet } = useWindhowWidth();
@@ -20,7 +19,7 @@ export default function Reservations() {
     userName: "",
     email: "",
     phone: "",
-    occasiion: "",
+    occasion: "",
   });
 
   const handleUserInformation = (e) => {
@@ -39,50 +38,78 @@ export default function Reservations() {
     }
   }, [time]);
 
-  return isMobile || isTablet ? (
-    <ReservationsMobile />
-  ) : (
-    <div className="reservactionsMainContainer">
-      <ReservationDetails
-        date={date}
-        setDate={setDate}
-        time={time}
-        setTime={setTime}
-        people={people}
-        setPeople={setPeople}
-        tableTimeOptions={tableTimeOptions}
-        selectedTimeSlot={selectedTimeSlot}
-        setSelectedTimeSlot={setSelectedTimeSlot}
-        setContinueToUserInfo={setContinueToUserInfo}
-        containerClass={
-          isMobile || isTablet
-            ? "reservationContainerMobile"
-            : "reservationContainer"
-        }
-      />
-      <UserInformation
-        continueToUserInfo={continueToUserInfo}
-        setContinueToConfirmation={setContinueToConfirmation}
-        userInformation={userInformation}
-        handleUserInformation={handleUserInformation}
-        containerClass={
-          isMobile || isTablet
-            ? "reservationContainerMobile"
-            : "reservationContainer"
-        }
-      />
-      <Confirmation
-        continueToConfirmation={continueToConfirmation}
-        people={people}
-        date={date}
-        selectedTimeSlot={selectedTimeSlot}
-        userInformation={userInformation}
-        containerClass={
-          isMobile || isTablet
-            ? "reservationContainerMobile"
-            : "reservationContainer"
-        }
-      />
+  return (
+    <div className="reservationsMainContainer">
+      {isMobile || isTablet ? (
+        <>
+          {!continueToUserInfo && !continueToConfirmation && (
+            <ReservationDetails
+              date={date}
+              setDate={setDate}
+              time={time}
+              setTime={setTime}
+              people={people}
+              setPeople={setPeople}
+              tableTimeOptions={tableTimeOptions}
+              selectedTimeSlot={selectedTimeSlot}
+              setSelectedTimeSlot={setSelectedTimeSlot}
+              setContinueToUserInfo={setContinueToUserInfo}
+              containerClass="reservationContainerMobile"
+            />
+          )}
+          {continueToUserInfo && (
+            <UserInformation
+              continueToUserInfo={continueToUserInfo}
+              setContinueToConfirmation={setContinueToConfirmation}
+              userInformation={userInformation}
+              handleUserInformation={handleUserInformation}
+              setContinueToUserInfo={setContinueToUserInfo}
+              containerClass="reservationContainerMobile"
+            />
+          )}
+          {continueToConfirmation && !continueToUserInfo && (
+            <Confirmation
+              continueToConfirmation={continueToConfirmation}
+              people={people}
+              date={date}
+              selectedTimeSlot={selectedTimeSlot}
+              userInformation={userInformation}
+              containerClass="reservationContainerMobile"
+            />
+          )}
+        </>
+      ) : (
+        <>
+          <ReservationDetails
+            date={date}
+            setDate={setDate}
+            time={time}
+            setTime={setTime}
+            people={people}
+            setPeople={setPeople}
+            tableTimeOptions={tableTimeOptions}
+            selectedTimeSlot={selectedTimeSlot}
+            setSelectedTimeSlot={setSelectedTimeSlot}
+            setContinueToUserInfo={setContinueToUserInfo}
+            containerClass="reservationContainer"
+          />
+          <UserInformation
+            continueToUserInfo={continueToUserInfo}
+            setContinueToConfirmation={setContinueToConfirmation}
+            userInformation={userInformation}
+            handleUserInformation={handleUserInformation}
+            containerClass="reservationContainer"
+          />
+          <Confirmation
+            continueToConfirmation={continueToConfirmation}
+            people={people}
+            date={date}
+            selectedTimeSlot={selectedTimeSlot}
+            userInformation={userInformation}
+            containerClass="reservationContainer"
+          />
+        </>
+      )}
     </div>
   );
 }
