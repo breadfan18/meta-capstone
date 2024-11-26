@@ -97,6 +97,7 @@ export default function Reservations() {
             continueToUserInfo={continueToUserInfo}
             setContinueToConfirmation={setContinueToConfirmation}
             userInformation={userInformation}
+            continueToConfirmation={continueToConfirmation}
             handleUserInformation={handleUserInformation}
             containerClass="reservationContainer"
           />

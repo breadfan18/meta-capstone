@@ -1,6 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
+import { checkEqual } from "../../helpers";
 
-export default function Confirmation({
+function Confirmation({
   continueToConfirmation,
   people,
   date,
@@ -37,3 +38,5 @@ export default function Confirmation({
     </div>
   );
 }
+
+export default memo(Confirmation, (prev, props) => checkEqual(prev, props));

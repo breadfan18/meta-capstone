@@ -1,3 +1,5 @@
+import { isEqual } from "lodash";
+
 export function getTimeIncrements(time, increment = 15, count = 9) {
   const [hours, minutes] = time.split(":").map(Number);
   const totalMinutes = hours * 60 + minutes;
@@ -21,3 +23,5 @@ function format12HourTime(minutes) {
   const formattedMinutes = mins === 0 ? "00" : mins < 10 ? `0${mins}` : mins;
   return `${formattedHours}:${formattedMinutes} ${ampm}`;
 }
+
+export const checkEqual = (l, r) => isEqual(l, r);

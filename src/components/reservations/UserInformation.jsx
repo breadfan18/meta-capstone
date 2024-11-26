@@ -1,19 +1,21 @@
-import React from "react";
+import React, { memo } from "react";
+import { checkEqual } from "../../helpers";
 
-export default function UserInformation({
+function UserInformation({
   continueToUserInfo,
   setContinueToConfirmation,
   userInformation,
   handleUserInformation,
   containerClass,
   setContinueToUserInfo,
+  continueToConfirmation,
 }) {
   return (
     <div class={containerClass}>
       <h1 style={{ color: continueToUserInfo ? "#1a4a3a" : "gray" }}>
         Your Information..
       </h1>
-      {continueToUserInfo && (
+      {(continueToUserInfo || continueToConfirmation) && (
         <form id="reservationForm">
           <div>
             <label for="date">Your name: </label>
@@ -94,3 +96,5 @@ export default function UserInformation({
     </div>
   );
 }
+
+export default memo(UserInformation, (prev, props) => checkEqual(prev, props));

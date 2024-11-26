@@ -112,6 +112,7 @@ ul {
   text-align: center;
   margin-top: 20px;
   cursor: pointer;
+  width: 100%;
 }
 
 .tablesImg {

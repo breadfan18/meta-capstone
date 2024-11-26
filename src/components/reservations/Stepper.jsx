@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FaCirclePlus, FaCircleMinus } from "react-icons/fa6";
-import { FaCheckCircle } from "react-icons/fa";
 
 const Stepper = ({ value, setValue, setGetTables }) => {
   const handleDecrease = () => {
@@ -24,10 +23,6 @@ const Stepper = ({ value, setValue, setGetTables }) => {
         />
         <FaCirclePlus onClick={handleIncrease} />
       </div>
-      <FaCheckCircle
-        style={{ color: "green" }}
-        onClick={() => setGetTables(true)}
-      />
     </div>
   );
 };

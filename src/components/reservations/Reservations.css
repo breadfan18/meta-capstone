@@ -20,7 +20,7 @@
   padding: 30px;
   border-radius: 20px;
   height: 42rem;
-  margin: 0 30px;
+  margin: 0 10px;
   box-shadow: 0 0 10px var(--primary-green);
 }
 
@@ -33,19 +33,20 @@
   border-radius: 20px;
   height: 42rem;
   margin: 10px 0;
-  /* box-shadow: 0 0 10px var(--primary-green); */
 }
 
-.reservationContainer h1 {
+.reservationContainer > h1,
+.reservationContainerMobile > h1 {
   color: var(--primary-green);
+  margin-top: 0;
 }
 
 #reservationForm {
-  background-color: var(--light-gray);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  /* justify-content: start; */
   height: 100%;
+  gap: 15px;
 }
 
 #reservationForm input,
@@ -62,13 +63,19 @@
   font-weight: bold;
 }
 
+.selectPeople {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .stepper {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.stepper svg {
+.stepper svg,
+.peopleCheck {
   cursor: pointer;
   font-size: 2.5rem;
   color: var(--primary-green);
@@ -82,11 +89,18 @@
   display: flex;
   width: 100%;
   flex-wrap: wrap;
+  border-radius: 10px;
+  background-color: var(--very-light-green);
+  padding: 20px;
+  justify-content: center;
+  height: 25%;
+  overflow-x: scroll;
 }
 
 .timeBox {
   padding: 8px;
-  background-color: var(--very-light-green);
+  background-color: var(--light-green);
+  color: white;
   width: 6rem;
   margin: 3px;
   border-radius: 20px;
@@ -97,6 +111,7 @@
 
 .selected {
   background-color: var(--yellow);
+  color: black;
 }
 
 .confirmationDialog p {
@@ -106,4 +121,9 @@
 .confirmationDialog span {
   color: var(--primary-green);
   font-weight: bold;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-evenly;
 }
