@@ -41,17 +41,16 @@
   margin-top: 0;
   font-size: clamp(20px, 2vw, 2rem);
 }
-
-#reservationForm {
+.reservationForm {
   display: flex;
   flex-direction: column;
-  /* justify-content: start; */
   height: 100%;
   gap: 15px;
+  justify-content: space-between;
 }
 
-#reservationForm input,
-#reservationForm select {
+.reservationForm input,
+.reservationForm select {
   width: 100%;
   height: 3rem;
   margin: 10px 0;
@@ -60,7 +59,7 @@
   padding: 10px;
 }
 
-#reservationForm label {
+.reservationForm label {
   font-weight: bold;
 }
 
@@ -94,7 +93,7 @@
   background-color: var(--very-light-green);
   padding: 20px;
   justify-content: center;
-  height: 8rem;
+  height: 12rem;
   overflow-x: scroll;
 }
 
@@ -106,8 +105,10 @@
   margin: 3px;
   border-radius: 20px;
   border: 3px solid var(--primary-green);
-  text-align: center;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .selected {
