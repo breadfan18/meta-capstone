@@ -39,6 +39,7 @@
 .reservationContainerMobile > h1 {
   color: var(--primary-green);
   margin-top: 0;
+  font-size: clamp(20px, 2vw, 2rem);
 }
 
 #reservationForm {
@@ -93,7 +94,7 @@
   background-color: var(--very-light-green);
   padding: 20px;
   justify-content: center;
-  height: 25%;
+  height: 8rem;
   overflow-x: scroll;
 }
 
