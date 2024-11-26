@@ -13,7 +13,12 @@ function UserInformation({
 }) {
   return (
     <div class={containerClass}>
-      <h1 style={{ color: continueToUserInfo ? "#1a4a3a" : "gray" }}>
+      <h1
+        style={{
+          color:
+            continueToUserInfo || continueToConfirmation ? "#1a4a3a" : "gray",
+        }}
+      >
         Your Information..
       </h1>
       {(continueToUserInfo || continueToConfirmation) && (
