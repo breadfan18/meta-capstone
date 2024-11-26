@@ -35,6 +35,14 @@ function Confirmation({
           </p>
         </div>
       )}
+
+      {continueToConfirmation && (
+        // eslint-disable-next-line jsx-a11y/iframe-has-title
+        <iframe
+          src="https://giphy.com/embed/TiIxMEkviUDmqpuyob"
+          style={{ border: "none" }}
+        ></iframe>
+      )}
     </div>
   );
 }
