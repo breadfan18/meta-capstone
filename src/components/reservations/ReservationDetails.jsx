@@ -14,10 +14,10 @@ const ReservationDetails = ({
   selectedTimeSlot,
   setSelectedTimeSlot,
   setContinueToUserInfo,
+  getTables,
+  setGetTables,
   containerClass,
 }) => {
-  const [getTables, setGetTables] = React.useState(false);
-
   const resetFields = () => {
     setDate("");
     setTime("");
@@ -105,7 +105,10 @@ const ReservationDetails = ({
           <button
             type="submit"
             className="reserveButton"
-            onClick={() => setContinueToUserInfo(true)}
+            onClick={(e) => {
+              e.preventDefault();
+              setContinueToUserInfo(true);
+            }}
             disabled={
               date === "" ||
               time === "" ||

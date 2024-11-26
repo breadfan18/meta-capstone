@@ -15,6 +15,7 @@ export default function Reservations() {
   const [time, setTime] = useState("");
   const [tableTimeOptions, setTableTimeOptions] = useState([]);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
+  const [getTables, setGetTables] = useState(false);
   const [userInformation, setUserInformation] = useState({
     userName: "",
     email: "",
@@ -24,8 +25,6 @@ export default function Reservations() {
 
   const handleUserInformation = (e) => {
     e.preventDefault();
-    console.log(e.target.name, e.target.value);
-
     setUserInformation({
       ...userInformation,
       [e.target.name]: e.target.value,
@@ -54,6 +53,8 @@ export default function Reservations() {
               selectedTimeSlot={selectedTimeSlot}
               setSelectedTimeSlot={setSelectedTimeSlot}
               setContinueToUserInfo={setContinueToUserInfo}
+              getTables={getTables}
+              setGetTables={setGetTables}
               containerClass="reservationContainerMobile"
             />
           )}
@@ -62,6 +63,7 @@ export default function Reservations() {
               continueToUserInfo={continueToUserInfo}
               setContinueToConfirmation={setContinueToConfirmation}
               userInformation={userInformation}
+              setUserInformation={setUserInformation}
               handleUserInformation={handleUserInformation}
               setContinueToUserInfo={setContinueToUserInfo}
               containerClass="reservationContainerMobile"
@@ -91,12 +93,15 @@ export default function Reservations() {
             selectedTimeSlot={selectedTimeSlot}
             setSelectedTimeSlot={setSelectedTimeSlot}
             setContinueToUserInfo={setContinueToUserInfo}
+            getTables={getTables}
+            setGetTables={setGetTables}
             containerClass="reservationContainer"
           />
           <UserInformation
             continueToUserInfo={continueToUserInfo}
             setContinueToConfirmation={setContinueToConfirmation}
             userInformation={userInformation}
+            setUserInformation={setUserInformation}
             continueToConfirmation={continueToConfirmation}
             handleUserInformation={handleUserInformation}
             containerClass="reservationContainer"

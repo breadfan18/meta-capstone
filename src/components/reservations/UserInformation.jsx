@@ -5,6 +5,7 @@ function UserInformation({
   continueToUserInfo,
   setContinueToConfirmation,
   userInformation,
+  setUserInformation,
   handleUserInformation,
   containerClass,
   setContinueToUserInfo,
@@ -25,6 +26,7 @@ function UserInformation({
               name="userName"
               required
               onChange={handleUserInformation}
+              value={userInformation.userName}
             />
           </div>
 
@@ -36,6 +38,7 @@ function UserInformation({
               name="email"
               required
               onChange={handleUserInformation}
+              value={userInformation.email}
             />
           </div>
 
@@ -47,6 +50,7 @@ function UserInformation({
               name="phone"
               required
               onChange={handleUserInformation}
+              value={userInformation.phone}
             />
           </div>
 
@@ -57,6 +61,7 @@ function UserInformation({
               name="occasion"
               required
               onChange={handleUserInformation}
+              value={userInformation.occasion}
             >
               [""]<option value="">-- Select an Occasion --</option>
               <option value="birthday">Birthday</option>
@@ -65,32 +70,53 @@ function UserInformation({
             </select>
           </div>
 
-          <button
-            type="submit"
-            className="reserveButton"
-            onClick={(e) => {
-              e.preventDefault();
-              if (setContinueToUserInfo) {
-                setContinueToUserInfo(false);
+          <div className="buttonGroup">
+            <button
+              type="submit"
+              className="resetButton reserveButton"
+              onClick={() =>
+                setUserInformation({
+                  userName: "",
+                  email: "",
+                  phone: "",
+                  occasion: "",
+                })
               }
-              setContinueToConfirmation(true);
-            }}
-            disabled={
-              userInformation.userName === "" ||
-              userInformation.email === "" ||
-              userInformation.phone === ""
-            }
-            style={{
-              backgroundColor:
+              style={{
+                backgroundColor: "#DC3545",
+                color: "white",
+                marginRight: "10px",
+              }}
+            >
+              Reset..
+            </button>
+            <button
+              type="submit"
+              className="reserveButton"
+              onClick={(e) => {
+                e.preventDefault();
+                if (setContinueToUserInfo) {
+                  setContinueToUserInfo(false);
+                }
+                setContinueToConfirmation(true);
+              }}
+              disabled={
                 userInformation.userName === "" ||
                 userInformation.email === "" ||
                 userInformation.phone === ""
-                  ? "gray"
-                  : "#eed049",
-            }}
-          >
-            Confirm Reservation
-          </button>
+              }
+              style={{
+                backgroundColor:
+                  userInformation.userName === "" ||
+                  userInformation.email === "" ||
+                  userInformation.phone === ""
+                    ? "gray"
+                    : "#eed049",
+              }}
+            >
+              Confirm Reservation
+            </button>
+          </div>
         </form>
       )}
     </div>
