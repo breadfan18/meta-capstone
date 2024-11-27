@@ -212,7 +212,6 @@ ul {
 .menuContainer img {
   height: auto;
   display: block;
-  /* max-width: 15rem; */
 }
 
 .menuContainer section {
@@ -222,26 +221,24 @@ ul {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
 }
 
 .menuItemContainerMobile {
   display: flex;
+  flex-direction: row;
   margin: 10px;
-  max-height: 15rem;
   background-color: var(--primary-green);
   border-radius: 10px;
   text-align: center;
   width: 100%;
-  min-width: 15rem;
   color: white;
   padding-bottom: 20px;
+  max-height: 15rem;
 }
 
 .menuItemContainerMobile img {
-  height: 100%;
-  display: block;
-  max-width: 15rem;
+  /* height: 10rem; */
+  width: clamp(10rem, 35%, 15rem);
 }
 
 .menuItemContainerMobile section {
