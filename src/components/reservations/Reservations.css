@@ -120,6 +120,15 @@
   margin: 20px;
 }
 
+.confirmationDialog h2 {
+  color: var(--primary-green);
+  text-align: center;
+  background-color: var(--very-light-green);
+  padding: 5px;
+  border-radius: 10px;
+  border: 3px solid var(--primary-green);
+}
+
 .confirmationDialog span {
   color: var(--primary-green);
   font-weight: bold;

@@ -124,12 +124,13 @@ ul {
 }
 
 .main-container {
-  /* background-color: var(--light-gray); */
   height: 100%;
   flex: 1;
   margin: 10px 0;
   border-radius: 10px;
-  /* padding: 20px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .reserveContainer {

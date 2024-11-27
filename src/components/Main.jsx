@@ -5,10 +5,10 @@ import Reviews from "./Reviews";
 
 export default function Main() {
   return (
-    <main className="main-container">
+    <>
       <ReserveTableBanner />
       <Menu />
       <Reviews />
-    </main>
+    </>
   );
 }
