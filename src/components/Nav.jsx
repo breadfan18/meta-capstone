@@ -1,25 +1,16 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Nav() {
   return (
-    <nav>
-      <ul className="nav">
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/about">About</a>
-        </li>
-        <li>
-          <a href="/menu">Menu</a>
-        </li>
-        <li>
-          <a href="/reservations">Reservations</a>
-        </li>
-        <li>
-          <a href="/login">Login</a>
-        </li>
-      </ul>
+    <nav className="nav">
+      <NavLink to="/" exact>
+        Home
+      </NavLink>
+      <NavLink to="/about">About</NavLink>
+      <NavLink to="/menu">Menu</NavLink>
+      <NavLink to="/reservations">Reservations</NavLink>
+      <NavLink to="/login">Login</NavLink>
     </nav>
   );
 }

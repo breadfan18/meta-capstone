@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaCirclePlus, FaCircleMinus } from "react-icons/fa6";
 
-const Stepper = ({ value, setValue, setGetTables }) => {
+const Stepper = ({ value, setValue }) => {
   const handleDecrease = () => {
     if (value <= 0) return;
     setValue(value - 1);
