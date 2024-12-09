@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
-import Stepper from "../Stepper";
 import "@testing-library/jest-dom/extend-expect";
+import Stepper from "../Stepper";
 
 describe("Stepper Component", () => {
   let value, setValue;

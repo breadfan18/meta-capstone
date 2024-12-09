@@ -27,12 +27,12 @@ const ReservationDetails = ({
   };
 
   return (
-    <div class={containerClass}>
+    <div className={containerClass}>
       <h1>Reservation deets..</h1>
-      <form class="reservationForm">
+      <form className="reservationForm">
         <div className="formGroup">
           <div className="inputField">
-            <label for="date">Select Date:</label>
+            <label htmlFor="date">Select Date:</label>
             <input
               type="date"
               id="date"
@@ -44,7 +44,7 @@ const ReservationDetails = ({
           </div>
 
           <div className="inputField">
-            <label for="time">Select Time:</label>
+            <label htmlFor="time">Select Time:</label>
             <input
               type="time"
               id="time"
@@ -59,7 +59,7 @@ const ReservationDetails = ({
           </div>
 
           <div>
-            <label for="people">Number of People:</label>
+            <label htmlFor="people">Number of People:</label>
             <div className="selectPeople">
               <Stepper
                 value={people}
@@ -74,6 +74,7 @@ const ReservationDetails = ({
                 }}
                 onClick={() => setGetTables(true)}
                 className="peopleCheck"
+                data-testid="peopleCheck"
               />
             </div>
           </div>
