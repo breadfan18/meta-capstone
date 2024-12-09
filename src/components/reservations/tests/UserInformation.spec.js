@@ -26,7 +26,6 @@ describe("UserInformation Component", () => {
 
   test("renders the component with the correct elements", () => {
     render(<UserInformation {...defaultProps} />);
-
     expect(screen.getByText("Your Information..")).toBeInTheDocument();
     expect(screen.getByLabelText("Your name:")).toBeInTheDocument();
     expect(screen.getByLabelText("Email address:")).toBeInTheDocument();
@@ -36,21 +35,17 @@ describe("UserInformation Component", () => {
 
   test("calls handleUserInformation when input fields change", () => {
     render(<UserInformation {...defaultProps} />);
-
     const nameInput = screen.getByLabelText("Your name:");
     fireEvent.change(nameInput, {
       target: { name: "userName", value: "John Doe" },
     });
-
     expect(defaultProps.handleUserInformation).toHaveBeenCalled();
   });
 
   test("resets the form when the Reset button is clicked", () => {
     render(<UserInformation {...defaultProps} />);
-
     const resetButton = screen.getByText("Reset..");
     fireEvent.click(resetButton);
-
     expect(mockSetUserInformation).toHaveBeenCalledWith({
       userName: "",
       email: "",
@@ -61,7 +56,6 @@ describe("UserInformation Component", () => {
 
   test("disables the Confirm Reservation button when required fields are empty", () => {
     render(<UserInformation {...defaultProps} />);
-
     const confirmButton = screen.getByText("Confirm Reservation");
     expect(confirmButton).toBeDisabled();
   });
@@ -77,7 +71,6 @@ describe("UserInformation Component", () => {
       },
     };
     render(<UserInformation {...filledProps} />);
-
     const confirmButton = screen.getByText("Confirm Reservation");
     expect(confirmButton).not.toBeDisabled();
   });
@@ -93,10 +86,8 @@ describe("UserInformation Component", () => {
       },
     };
     render(<UserInformation {...filledProps} />);
-
     const confirmButton = screen.getByText("Confirm Reservation");
     fireEvent.click(confirmButton);
-
     expect(mockSetContinueToConfirmation).toHaveBeenCalledWith(true);
     expect(mockSetContinueToUserInfo).toHaveBeenCalledWith(false);
   });
