@@ -20,8 +20,9 @@ const Stepper = ({ value, setValue }) => {
         <FaCircleMinus
           onClick={handleDecrease}
           style={{ marginRight: "10px" }}
+          data-testid="minus"
         />
-        <FaCirclePlus onClick={handleIncrease} />
+        <FaCirclePlus onClick={handleIncrease} data-testid="plus" />
       </div>
     </div>
   );

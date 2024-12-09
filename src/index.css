@@ -283,13 +283,13 @@ ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  align-items: center;
   flex-wrap: wrap;
   padding: 10px 30px;
   background-color: var(--light-green);
   color: white;
   border-radius: 10px;
   font-size: 10px;
+  gap: 10px;
 }
 
 .imgAndSocial {
