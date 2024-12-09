@@ -10,7 +10,7 @@ function Confirmation({
   containerClass,
 }) {
   return (
-    <div class={containerClass}>
+    <div className={containerClass}>
       <h1 style={{ color: continueToConfirmation ? "#1a4a3a" : "gray" }}>
         Confirmation..
       </h1>
