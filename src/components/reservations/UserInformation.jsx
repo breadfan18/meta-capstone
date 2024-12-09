@@ -12,7 +12,7 @@ function UserInformation({
   continueToConfirmation,
 }) {
   return (
-    <div class={containerClass}>
+    <div className={containerClass}>
       <h1
         style={{
           color:
@@ -22,13 +22,13 @@ function UserInformation({
         Your Information..
       </h1>
       {(continueToUserInfo || continueToConfirmation) && (
-        <form class="reservationForm userInfoGroup">
+        <form className="reservationForm userInfoGroup">
           <div className="formGroup">
             <div>
-              <label for="date">Your name: </label>
+              <label htmlFor="userName">Your name: </label>
               <input
                 type="text"
-                id="name"
+                id="userName"
                 name="userName"
                 required
                 onChange={handleUserInformation}
@@ -37,7 +37,7 @@ function UserInformation({
             </div>
 
             <div>
-              <label for="time">Email address:</label>
+              <label htmlFor="email">Email address:</label>
               <input
                 type="email"
                 id="email"
@@ -49,7 +49,7 @@ function UserInformation({
             </div>
 
             <div>
-              <label for="time">Phone Number:</label>
+              <label htmlFor="phone">Phone Number:</label>
               <input
                 type="phone"
                 id="phone"
@@ -61,7 +61,7 @@ function UserInformation({
             </div>
 
             <div>
-              <label for="occasion">Choose an occasion:</label>
+              <label htmlFor="occasion">Choose an occasion:</label>
               <select
                 id="occasion"
                 name="occasion"
