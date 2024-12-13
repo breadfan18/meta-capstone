@@ -15,7 +15,7 @@ function Confirmation({
         Confirmation..
       </h1>
       {continueToConfirmation && (
-        <div className="confirmationDialog">
+        <div className="confirmationDialog" data-testid="confirmationDialog">
           <h2>See you soon!</h2>
           <p>
             You have successfully reserved a table for <span>{people}</span>{" "}

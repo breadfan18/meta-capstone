@@ -112,6 +112,7 @@ const ReservationDetails = ({
             Reset..
           </button>
           <button
+            data-testid="reserveButton"
             type="submit"
             className="reserveButton"
             onClick={(e) => {

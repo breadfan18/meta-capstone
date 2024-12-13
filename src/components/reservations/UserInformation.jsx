@@ -22,7 +22,10 @@ function UserInformation({
         Your Information..
       </h1>
       {(continueToUserInfo || continueToConfirmation) && (
-        <form className="reservationForm userInfoGroup">
+        <form
+          className="reservationForm userInfoGroup"
+          data-testid="userInfoGroup"
+        >
           <div className="formGroup">
             <div>
               <label htmlFor="userName">Your name: </label>

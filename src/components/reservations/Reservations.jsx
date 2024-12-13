@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Reservations.css";
+// import "./Reservations.css";
 import { getTimeIncrements } from "../../helpers";
 import ReservationDetails from "./ReservationDetails";
 import UserInformation from "./UserInformation";
