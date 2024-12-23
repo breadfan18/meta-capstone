@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import Stepper from "./Stepper";
 import { FaCheckCircle } from "react-icons/fa";
-import { checkEqual } from "../../helpers";
+import { checkEqual } from "../../api";
 
 const ReservationDetails = ({
   date,
@@ -42,7 +42,7 @@ const ReservationDetails = ({
               value={date}
             />
           </div>
-
+          {/* 
           <div className="inputField">
             <label htmlFor="time">Select Time:</label>
             <input
@@ -56,7 +56,7 @@ const ReservationDetails = ({
               onChange={(e) => setTime(e.target.value)}
               value={time}
             />
-          </div>
+          </div> */}
 
           <div>
             <label htmlFor="people">Number of People:</label>
@@ -82,7 +82,6 @@ const ReservationDetails = ({
           <div className="tableTimesContainer">
             {tableTimeOptions.length > 0 &&
               date !== "" &&
-              time !== "" &&
               people !== 0 &&
               getTables &&
               tableTimeOptions.map((time) => (

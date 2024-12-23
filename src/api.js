@@ -1,6 +1,6 @@
 import { isEqual } from "lodash";
 
-export function getTimeIncrements(time, increment = 15, count = 9) {
+export function fetchAPIWithTime(time, increment = 15, count = 9) {
   const [hours, minutes] = time.split(":").map(Number);
   const totalMinutes = hours * 60 + minutes;
   const timeIncrements = [];
@@ -23,5 +23,33 @@ function format12HourTime(minutes) {
   const formattedMinutes = mins === 0 ? "00" : mins < 10 ? `0${mins}` : mins;
   return `${formattedHours}:${formattedMinutes} ${ampm}`;
 }
+
+const seededRandom = function (seed) {
+  var m = 2 ** 35 - 31;
+  var a = 185852;
+  var s = seed % m;
+  return function () {
+    return (s = (s * a) % m) / m;
+  };
+};
+
+export const fetchAPI = function (date) {
+  let result = [];
+  let random = seededRandom(date.getDate());
+
+  for (let i = 17; i <= 23; i++) {
+    if (random() < 0.5) {
+      result.push(i + ":00");
+    }
+    if (random() < 0.5) {
+      result.push(i + ":30");
+    }
+  }
+  return result;
+};
+
+export const submitAPI = function (formData) {
+  return true;
+};
 
 export const checkEqual = (l, r) => isEqual(l, r);

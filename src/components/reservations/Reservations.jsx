@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import "./Reservations.css";
-import { getTimeIncrements } from "../../helpers";
+import { fetchAPI, fetchAPIWithTime } from "../../api";
 import ReservationDetails from "./ReservationDetails";
 import UserInformation from "./UserInformation";
 import Confirmation from "./Confirmation";
@@ -32,10 +32,10 @@ export default function Reservations() {
   };
 
   useEffect(() => {
-    if (time !== "") {
-      setTableTimeOptions(getTimeIncrements(time));
+    if (date !== "") {
+      setTableTimeOptions(fetchAPI(new Date(date)));
     }
-  }, [time]);
+  }, [date]);
 
   return (
     <div className="reservationsMainContainer">

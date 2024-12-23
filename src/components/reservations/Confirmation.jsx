@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { checkEqual } from "../../helpers";
+import { checkEqual } from "../../api";
 
 function Confirmation({
   continueToConfirmation,

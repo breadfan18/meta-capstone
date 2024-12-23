@@ -1,12 +1,11 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/extend-expect";
 import Reservations from "../Reservations";
-import * as helpers from "../../../helpers";
+import * as helpers from "../../../api";
 import * as windowWidthHook from "../../../windowWidth";
 
-jest.mock("../../../helpers", () => ({
+jest.mock("../../../api", () => ({
   getTimeIncrements: jest.fn(),
   checkEqual: jest.fn(),
 }));
@@ -49,11 +48,11 @@ describe("Reservations Component", () => {
 
   it("updates tableTimeOptions when time changes", () => {
     const mockTimeIncrements = ["12:00 PM", "12:30 PM", "1:00 PM"];
-    helpers.getTimeIncrements.mockReturnValue(mockTimeIncrements);
+    helpers.fetchAPIWithTime.mockReturnValue(mockTimeIncrements);
     render(<Reservations />);
     fireEvent.change(screen.getByLabelText(/time/i), {
       target: { value: "12:00" },
     });
-    expect(helpers.getTimeIncrements).toHaveBeenCalledWith("12:00");
+    expect(helpers.fetchAPIWithTime).toHaveBeenCalledWith("12:00");
   });
 });
