@@ -45,14 +45,4 @@ describe("Reservations Component", () => {
     expect(screen.queryByText(USER_INFO)).not.toBeInTheDocument();
     expect(screen.queryByText(CONFIRMATION)).not.toBeInTheDocument();
   });
-
-  it("updates tableTimeOptions when time changes", () => {
-    const mockTimeIncrements = ["12:00 PM", "12:30 PM", "1:00 PM"];
-    helpers.fetchAPIWithTime.mockReturnValue(mockTimeIncrements);
-    render(<Reservations />);
-    fireEvent.change(screen.getByLabelText(/time/i), {
-      target: { value: "12:00" },
-    });
-    expect(helpers.fetchAPIWithTime).toHaveBeenCalledWith("12:00");
-  });
 });

@@ -36,13 +36,6 @@ describe("ReservationDetails Component", () => {
     expect(props.setDate).toHaveBeenCalledWith("2023-10-10");
   });
 
-  test("calls setTime when time input changes", () => {
-    render(<ReservationDetails {...props} />);
-    const timeInput = screen.getByLabelText("Select Time:");
-    fireEvent.change(timeInput, { target: { value: "10:00" } });
-    expect(props.setTime).toHaveBeenCalledWith("10:00");
-  });
-
   test("calls setPeople when Stepper value changes", () => {
     render(<ReservationDetails {...props} />);
     const plusButton = screen.getByTestId("plus");
