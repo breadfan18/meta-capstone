@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { checkEqual } from "../../api";
+import { checkEqual, submitAPI } from "../../api";
 
 function UserInformation({
   continueToUserInfo,
@@ -109,17 +109,20 @@ function UserInformation({
                   setContinueToUserInfo(false);
                 }
                 setContinueToConfirmation(true);
+                submitAPI(userInformation);
               }}
               disabled={
                 userInformation.userName === "" ||
                 userInformation.email === "" ||
-                userInformation.phone === ""
+                userInformation.phone === "" ||
+                userInformation.occasion === ""
               }
               style={{
                 backgroundColor:
                   userInformation.userName === "" ||
                   userInformation.email === "" ||
-                  userInformation.phone === ""
+                  userInformation.phone === "" ||
+                  userInformation.occasion === ""
                     ? "gray"
                     : "#eed049",
               }}

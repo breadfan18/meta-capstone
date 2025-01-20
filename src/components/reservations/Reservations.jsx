@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import "./Reservations.css";
-import { fetchAPI, fetchAPIWithTime } from "../../api";
+import { fetchAPI, fetchAPIWithTime, submitAPI } from "../../api";
 import ReservationDetails from "./ReservationDetails";
 import UserInformation from "./UserInformation";
 import Confirmation from "./Confirmation";
@@ -69,16 +69,17 @@ export default function Reservations() {
               containerClass="reservationContainerMobile"
             />
           )}
-          {continueToConfirmation && !continueToUserInfo && (
-            <Confirmation
-              continueToConfirmation={continueToConfirmation}
-              people={people}
-              date={date}
-              selectedTimeSlot={selectedTimeSlot}
-              userInformation={userInformation}
-              containerClass="reservationContainerMobile"
-            />
-          )}
+          {continueToConfirmation &&
+            !continueToUserInfo(
+              <Confirmation
+                continueToConfirmation={continueToConfirmation}
+                people={people}
+                date={date}
+                selectedTimeSlot={selectedTimeSlot}
+                userInformation={userInformation}
+                containerClass="reservationContainerMobile"
+              />
+            )}
         </>
       ) : (
         <>

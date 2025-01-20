@@ -42,22 +42,6 @@ const ReservationDetails = ({
               value={date}
             />
           </div>
-          {/* 
-          <div className="inputField">
-            <label htmlFor="time">Select Time:</label>
-            <input
-              type="time"
-              id="time"
-              name="time"
-              // min="09:00"
-              // max="11:00"
-              step="900"
-              required
-              onChange={(e) => setTime(e.target.value)}
-              value={time}
-            />
-          </div> */}
-
           <div>
             <label htmlFor="people">Number of People:</label>
             <div className="selectPeople">
@@ -118,18 +102,10 @@ const ReservationDetails = ({
               e.preventDefault();
               setContinueToUserInfo(true);
             }}
-            disabled={
-              date === "" ||
-              time === "" ||
-              people === 0 ||
-              selectedTimeSlot === ""
-            }
+            disabled={date === "" || people === 0 || selectedTimeSlot === ""}
             style={{
               backgroundColor:
-                date === "" ||
-                time === "" ||
-                people === 0 ||
-                selectedTimeSlot === ""
+                date === "" || people === 0 || selectedTimeSlot === ""
                   ? "gray"
                   : "#eed049",
             }}
