@@ -178,6 +178,7 @@ ul {
 
 .menuContainer {
   padding: 20px;
+  font-size: clamp(12px, 3vw, 1rem);
 }
 
 .menuContainer ul {
@@ -251,11 +252,12 @@ ul {
 }
 
 .reviewsContainer {
-  padding: 20px;
+  padding: 10px;
   background-color: var(--light-gray);
   border-radius: 20px;
-  margin: 30px;
+  margin: 20px;
   text-align: center;
+  font-size: clamp(12px, 3vw, 1rem);
 }
 
 .reviewsContainer section {
