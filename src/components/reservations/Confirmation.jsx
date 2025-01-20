@@ -33,14 +33,11 @@ function Confirmation({
     }
   }, [continueToConfirmation, userInformation]);
 
-  console.log(confirmed);
-
   return (
     <div className={containerClass}>
       <h1 style={{ color: continueToConfirmation ? "#1a4a3a" : "gray" }}>
         Confirmation..
       </h1>
-      {/* <Spinner /> */}
       {continueToConfirmation && confirmed ? (
         <>
           <div className="confirmationDialog" data-testid="confirmationDialog">

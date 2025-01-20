@@ -1,13 +1,14 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Reservations from "../Reservations";
-import * as helpers from "../../../api";
 import * as windowWidthHook from "../../../windowWidth";
+import { submitAPI } from "../../../api";
 
 jest.mock("../../../api", () => ({
   getTimeIncrements: jest.fn(),
   checkEqual: jest.fn(),
+  submitAPI: jest.fn(),
 }));
 
 jest.mock("../../../windowWidth", () => ({

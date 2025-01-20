@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import "./Reservations.css";
-import { fetchAPI, fetchAPIWithTime, submitAPI } from "../../api";
+import { fetchAPI } from "../../api";
 import ReservationDetails from "./ReservationDetails";
 import UserInformation from "./UserInformation";
 import Confirmation from "./Confirmation";

@@ -2,6 +2,11 @@ import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Confirmation from "../Confirmation";
+import { submitAPI } from "../../../api";
+
+jest.mock("../../../api", () => ({
+  submitAPI: jest.fn(),
+}));
 
 describe("Confirmation Component", () => {
   let props;
@@ -16,6 +21,7 @@ describe("Confirmation Component", () => {
         userName: "John Doe",
         email: "johndoe@email.com",
         phone: "123-456-7890",
+        occasion: "Birthday",
       },
       containerClass: "reservationContainer",
     };
@@ -25,13 +31,12 @@ describe("Confirmation Component", () => {
     render(<Confirmation {...props} />);
     expect(screen.getByText("Confirmation..")).toBeInTheDocument();
   });
-  test("displays confirmation message properly", () => {
+
+  test("does not render confirmation dialog if API fails", () => {
+    submitAPI.mockReturnValue(false);
     render(<Confirmation {...props} />);
-    expect(
-      screen.getByText(props.userInformation.userName)
-    ).toBeInTheDocument();
-    expect(screen.getByText(props.userInformation.email)).toBeInTheDocument();
-    expect(screen.getByText(props.userInformation.phone)).toBeInTheDocument();
+    expect(screen.getByTestId("spinner")).toBeInTheDocument();
+    expect(screen.queryByTestId("confirmationDialog")).not.toBeInTheDocument();
   });
   test("does not display confirmation message when continueToConfirmation is false", () => {
     props.continueToConfirmation = false;
