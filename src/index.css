@@ -486,3 +486,16 @@ ul {
     transform: rotate(360deg);
   }
 }
+
+.field-error {
+  position: absolute;
+  right: 0;
+  top: 11px;
+  margin: 0;
+  color: red;
+  font-size: 0.7rem;
+}
+
+.formGroup div {
+  position: relative;
+}

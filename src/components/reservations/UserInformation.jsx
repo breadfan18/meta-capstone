@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import { checkEqual, submitAPI } from "../../api";
 
 function UserInformation({
@@ -11,6 +11,43 @@ function UserInformation({
   setContinueToUserInfo,
   continueToConfirmation,
 }) {
+  const [errors, setErrors] = useState({});
+
+  const formIsValid = () => {
+    const formErrors = {};
+
+    const { userName, email, phone, occasion } = userInformation;
+
+    if (!userName) formErrors.userName = "Name is required";
+    if (userName && !/^[A-Za-zÀ-ÖØ-öø-ÿ '-]+$/.test(userName))
+      formErrors.userName = "Name should be alphabets only";
+    if (!email) formErrors.email = "Email is required";
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      formErrors.email = "Invalid email format";
+    if (!phone) formErrors.phone = "Phone is required";
+    if (phone && !/^\d{3}-\d{3}-\d{4}$/.test(phone))
+      formErrors.phone = "Invalid phone format";
+    if (!occasion) formErrors.occasion = "Occasion is required";
+
+    setErrors(formErrors);
+
+    return Object.keys(formErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!formIsValid()) return;
+
+    if (setContinueToUserInfo) {
+      setContinueToUserInfo(false);
+    }
+    setContinueToConfirmation(true);
+    submitAPI(userInformation);
+  };
+
+  console.log(errors);
+
   return (
     <div className={containerClass}>
       <h1
@@ -29,6 +66,9 @@ function UserInformation({
           <div className="formGroup">
             <div>
               <label htmlFor="userName">Your name: </label>
+              {errors.userName && (
+                <p className="field-error">{errors.userName}</p>
+              )}
               <input
                 type="text"
                 id="userName"
@@ -36,11 +76,13 @@ function UserInformation({
                 required
                 onChange={handleUserInformation}
                 value={userInformation.userName}
+                // pattern="[A-Za-zÀ-ÖØ-öø-ÿ '-]+"
               />
             </div>
 
-            <div>
+            <div style={{ position: "relative" }}>
               <label htmlFor="email">Email address:</label>
+              {errors.email && <p className="field-error">{errors.email}</p>}
               <input
                 type="email"
                 id="email"
@@ -53,6 +95,7 @@ function UserInformation({
 
             <div>
               <label htmlFor="phone">Phone Number:</label>
+              {errors.phone && <p className="field-error">{errors.phone}</p>}
               <input
                 type="phone"
                 id="phone"
@@ -103,14 +146,7 @@ function UserInformation({
             <button
               type="submit"
               className="reserveButton"
-              onClick={(e) => {
-                e.preventDefault();
-                if (setContinueToUserInfo) {
-                  setContinueToUserInfo(false);
-                }
-                setContinueToConfirmation(true);
-                submitAPI(userInformation);
-              }}
+              onClick={(e) => handleSubmit(e)}
               disabled={
                 userInformation.userName === "" ||
                 userInformation.email === "" ||
