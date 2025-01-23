@@ -6,8 +6,7 @@ import { checkEqual } from "../../api";
 const ReservationDetails = ({
   date,
   setDate,
-  time,
-  setTime,
+  handleDate,
   people,
   setPeople,
   tableTimeOptions,
@@ -17,14 +16,16 @@ const ReservationDetails = ({
   getTables,
   setGetTables,
   containerClass,
+  dateError,
 }) => {
   const resetFields = () => {
     setDate("");
-    setTime("");
     setPeople(0);
     setSelectedTimeSlot("");
     setGetTables(false);
   };
+
+  console.log("dateError", dateError);
 
   return (
     <div className={containerClass}>
@@ -33,13 +34,15 @@ const ReservationDetails = ({
         <div className="formGroup">
           <div className="inputField">
             <label htmlFor="date">Select Date:</label>
+            {dateError !== "" && <p className="field-error">{dateError}</p>}
             <input
               type="date"
               id="date"
               name="date"
               required
-              onChange={(e) => setDate(e.target.value)}
+              onChange={(e) => handleDate(e)}
               value={date}
+              // onBlur={handleBlur}
             />
           </div>
           <div>

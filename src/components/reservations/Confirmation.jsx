@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { memo, useEffect, useState } from "react";
-import { checkEqual, submitAPI } from "../../api";
+import { checkEqual, submitAPI, validateObjectProperties } from "../../api";
 import Spinner from "../common/Spinner";
 
 function Confirmation({
@@ -12,16 +12,6 @@ function Confirmation({
   containerClass,
 }) {
   const [confirmed, setConfirmed] = useState(false);
-
-  function validateObjectProperties(obj) {
-    if (typeof obj !== "object" || obj === null) {
-      throw new Error("Input must be a non-null object.");
-    }
-
-    return Object.values(obj).every(
-      (value) => typeof value === "string" && value.trim() !== ""
-    );
-  }
 
   useEffect(() => {
     const confirmationFromApi = submitAPI(userInformation);

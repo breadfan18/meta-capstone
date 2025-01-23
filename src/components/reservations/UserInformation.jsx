@@ -1,5 +1,6 @@
 import React, { memo, useState } from "react";
-import { checkEqual, submitAPI } from "../../api";
+import { checkEqual } from "../../api";
+import _ from "lodash";
 
 function UserInformation({
   continueToUserInfo,
@@ -13,40 +14,50 @@ function UserInformation({
 }) {
   const [errors, setErrors] = useState({});
 
+  const validateField = (name, value) => {
+    let error = "";
+    if (name === "userName") {
+      if (!value) error = "Name is required";
+      else if (!/^[A-Za-zÀ-ÖØ-öø-ÿ '-]+$/.test(value))
+        error = "Name should be alphabets only";
+    } else if (name === "email") {
+      if (!value) error = "Email is required";
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+        error = "Invalid email format";
+    } else if (name === "phone") {
+      if (!value) error = "Phone is required";
+      else if (!/^\d{3}-\d{3}-\d{4}$/.test(value))
+        error = "Invalid phone format";
+    } else if (name === "occasion") {
+      if (!value) error = "Occasion is required";
+    }
+    return error;
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    const error = validateField(name, value);
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+  };
+
   const formIsValid = () => {
     const formErrors = {};
-
-    const { userName, email, phone, occasion } = userInformation;
-
-    if (!userName) formErrors.userName = "Name is required";
-    if (userName && !/^[A-Za-zÀ-ÖØ-öø-ÿ '-]+$/.test(userName))
-      formErrors.userName = "Name should be alphabets only";
-    if (!email) formErrors.email = "Email is required";
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-      formErrors.email = "Invalid email format";
-    if (!phone) formErrors.phone = "Phone is required";
-    if (phone && !/^\d{3}-\d{3}-\d{4}$/.test(phone))
-      formErrors.phone = "Invalid phone format";
-    if (!occasion) formErrors.occasion = "Occasion is required";
-
+    Object.keys(userInformation).forEach((key) => {
+      const error = validateField(key, userInformation[key]);
+      if (error) formErrors[key] = error;
+    });
     setErrors(formErrors);
-
     return Object.keys(formErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!formIsValid()) return;
-
     if (setContinueToUserInfo) {
       setContinueToUserInfo(false);
     }
     setContinueToConfirmation(true);
-    submitAPI(userInformation);
   };
-
-  console.log(errors);
 
   return (
     <div className={containerClass}>
@@ -75,6 +86,7 @@ function UserInformation({
                 name="userName"
                 required
                 onChange={handleUserInformation}
+                onBlur={handleBlur}
                 value={userInformation.userName}
                 // pattern="[A-Za-zÀ-ÖØ-öø-ÿ '-]+"
               />
@@ -89,6 +101,7 @@ function UserInformation({
                 name="email"
                 required
                 onChange={handleUserInformation}
+                onBlur={handleBlur}
                 value={userInformation.email}
               />
             </div>
@@ -102,6 +115,7 @@ function UserInformation({
                 name="phone"
                 required
                 onChange={handleUserInformation}
+                onBlur={handleBlur}
                 value={userInformation.phone}
               />
             </div>
@@ -113,6 +127,7 @@ function UserInformation({
                 name="occasion"
                 required
                 onChange={handleUserInformation}
+                onBlur={handleBlur}
                 value={userInformation.occasion}
               >
                 [""]<option value="">-- Select an Occasion --</option>
@@ -120,6 +135,9 @@ function UserInformation({
                 <option value="anniversary">Anniversary</option>
                 <option value="wedding">Wedding</option>
               </select>
+              {errors.occasion && (
+                <p className="field-error">{errors.occasion}</p>
+              )}
             </div>
           </div>
 
@@ -147,20 +165,9 @@ function UserInformation({
               type="submit"
               className="reserveButton"
               onClick={(e) => handleSubmit(e)}
-              disabled={
-                userInformation.userName === "" ||
-                userInformation.email === "" ||
-                userInformation.phone === "" ||
-                userInformation.occasion === ""
-              }
+              disabled={!_.isEmpty(errors)}
               style={{
-                backgroundColor:
-                  userInformation.userName === "" ||
-                  userInformation.email === "" ||
-                  userInformation.phone === "" ||
-                  userInformation.occasion === ""
-                    ? "gray"
-                    : "#eed049",
+                backgroundColor: !_.isEmpty(errors) ? "gray" : "#eed049",
               }}
             >
               Confirm Reservation

@@ -53,3 +53,19 @@ export const submitAPI = function (formData) {
 };
 
 export const checkEqual = (l, r) => isEqual(l, r);
+
+export function validateObjectProperties(obj) {
+  if (typeof obj !== "object" || obj === null) {
+    throw new Error("Input must be a non-null object.");
+  }
+
+  return Object.values(obj).every(
+    (value) => typeof value === "string" && value.trim() !== ""
+  );
+}
+
+export function dateHasPassed(dateString) {
+  const givenDate = new Date(dateString);
+  const currentDate = new Date();
+  return givenDate < currentDate ? true : false;
+}

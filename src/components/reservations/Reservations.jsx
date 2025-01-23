@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import "./Reservations.css";
-import { fetchAPI } from "../../api";
+import { dateHasPassed, fetchAPI } from "../../api";
 import ReservationDetails from "./ReservationDetails";
 import UserInformation from "./UserInformation";
 import Confirmation from "./Confirmation";
@@ -12,16 +12,35 @@ export default function Reservations() {
   const [continueToConfirmation, setContinueToConfirmation] = useState(false);
   const [people, setPeople] = useState(0);
   const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
   const [tableTimeOptions, setTableTimeOptions] = useState([]);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
   const [getTables, setGetTables] = useState(false);
+  const [dateError, setDateError] = useState("");
   const [userInformation, setUserInformation] = useState({
     userName: "",
     email: "",
     phone: "",
     occasion: "",
   });
+
+  const handleDate = (e) => {
+    const { name, value } = e.target;
+
+    const isPastDate = dateHasPassed(value);
+
+    console.log("isPastDate", isPastDate);
+    console.log("name:", value);
+
+    if (name === "date") {
+      if (isPastDate) {
+        setDateError("Please select a date in the future");
+        return;
+      } else {
+        setDate(value);
+        setDateError("");
+      }
+    }
+  };
 
   const handleUserInformation = (e) => {
     e.preventDefault();
@@ -44,9 +63,7 @@ export default function Reservations() {
           {!continueToUserInfo && !continueToConfirmation && (
             <ReservationDetails
               date={date}
-              setDate={setDate}
-              time={time}
-              setTime={setTime}
+              handleDate={handleDate}
               people={people}
               setPeople={setPeople}
               tableTimeOptions={tableTimeOptions}
@@ -56,6 +73,7 @@ export default function Reservations() {
               getTables={getTables}
               setGetTables={setGetTables}
               containerClass="reservationContainerMobile"
+              dateError={dateError}
             />
           )}
           {continueToUserInfo && (
@@ -86,8 +104,7 @@ export default function Reservations() {
           <ReservationDetails
             date={date}
             setDate={setDate}
-            time={time}
-            setTime={setTime}
+            handleDate={handleDate}
             people={people}
             setPeople={setPeople}
             tableTimeOptions={tableTimeOptions}
@@ -97,6 +114,7 @@ export default function Reservations() {
             getTables={getTables}
             setGetTables={setGetTables}
             containerClass="reservationContainer"
+            dateError={dateError}
           />
           <UserInformation
             continueToUserInfo={continueToUserInfo}
